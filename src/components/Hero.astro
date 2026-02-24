@@ -1,0 +1,40 @@
+---
+// src/components/Hero.astro
+import { Image } from 'astro:assets';
+
+interface Props {
+  title: string;
+  subtitle?: string;
+  height?: any;
+  imagePath: any; // Vi endrar denne frå string til any/ImageMetadata
+}
+
+const { 
+  title, 
+  subtitle, 
+  imagePath, 
+  height = "h-[90vh]" 
+} = Astro.props;
+---
+
+<section class={`relative ${height} flex items-center justify-center overflow-hidden bg-deep-gray`}>
+  <div class="relative z-20 text-center px-6 max-w-5xl">
+    <p class="text-sparkle uppercase tracking-[0.5em] text-xs mb-4 animate-fade-in-up">
+      {subtitle}
+    </p>
+    <h1 class="text-white text-5xl md:text-8xl font-light italic mb-8 animate-fade-in-up">
+      {title}
+    </h1>
+  </div>
+
+  <div class="absolute inset-0 z-0">
+    <Image 
+      src={imagePath} 
+      alt={title} 
+      loading="eager" 
+      fetchpriority="high"
+      class="w-full h-full object-cover opacity-40 transition-transform duration-[20s] hover:scale-110"
+    />
+    <div class="absolute inset-0 bg-gradient-to-b from-deep-gray/60 via-transparent to-deep-gray/80"></div>
+  </div>
+</section>
