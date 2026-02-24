@@ -1,0 +1,89 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import Quote from "../components/Quote.astro";
+
+// Importer bilete spesifikt for event
+import eventHero from "../assets/images/event.jpg";
+import corporateAction from "../assets/images/DMCfest261023-102.jpg";
+---
+
+<Layout 
+  title="Underholdning til Event og Firmafest | Steinar Thelen"
+  description="Løft ditt neste firmaarrangement med magi i verdensklasse. Profesjonell underholdning tilpasset konferanser og kick-offs."
+>
+  
+  <Hero 
+    title="Magisk løft til ditt event" 
+    subtitle="Proff underholdning for næringslivet"
+    imagePath={eventHero}
+    height="h-[85vh]"
+  />
+
+  <Quote 
+    text="Den perfekte kombinasjonen av humor og uforklarlig magi som får praten i gang i pausene."
+  />
+
+  <section class="max-w-7xl mx-auto py-24 px-8">
+    <div class="grid md:grid-cols-2 gap-20 items-center">
+      
+      <div class="space-y-8">
+        <h2 class="text-4xl md:text-6xl font-serif leading-tight">
+          Når resultatet <span class="text-sparkle italic">må</span> være perfekt
+        </h2>
+        
+        <div class="space-y-6 text-lg text-deep-gray/70 leading-relaxed font-light">
+          <p>
+            Enten det er snakk om et julebord, en produktlansering eller en stor konferanse, 
+            forstår Steinar viktigheten av profesjonalitet. Magi fungerer som den ultimate 
+            "isbryteren" og sørger for at deltakerne sitter igjen med en felles opplevelse de vil snakke om lenge.
+          </p>
+          
+          <ul class="space-y-4 pt-4">
+            <li class="flex items-start gap-3">
+              <span class="text-sparkle text-xl">✦</span>
+              <span><strong>Mingle-magi:</strong> Steinar mingler blant gjestene under velkomsten eller mellom rettene.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-sparkle text-xl">✦</span>
+              <span><strong>Sceneshow:</strong> Et skreddersydd show fra scenen som engasjerer hele salen samtidig.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-sparkle text-xl">✦</span>
+              <span><strong>Tilpasset budskap:</strong> Har bedriften et tema? Steinar kan ofte veve dette inn i triksene.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="relative">
+        <Image 
+          src={corporateAction} 
+          alt="Steinar Thelen på scenen foran et bedriftspublikum" 
+          class="rounded-lg shadow-2xl brightness-90 contrast-110"
+        />
+        <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-sparkle/5 rounded-full blur-3xl -z-10"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <Quote 
+    text="Vi har brukt Steinar til flere av våre største konferanser. Han leverer alltid over forventning!" 
+    author="Event Manager, Storbedrift AS"
+  />
+
+  <section class="py-20 border-t border-b border-gray-100 bg-white/50">
+    <div class="max-w-5xl mx-auto px-8 text-center">
+      <p class="text-xs uppercase tracking-[0.4em] text-gray-400 mb-12">Et utvalg av tidligere kunder</p>
+      <div class="flex flex-wrap justify-center gap-12 opacity-50 grayscale">
+         <span class="text-2xl font-serif italic text-deep-gray">Logo 1</span>
+         <span class="text-2xl font-serif italic text-deep-gray">Logo 2</span>
+         <span class="text-2xl font-serif italic text-deep-gray">Logo 3</span>
+         <span class="text-2xl font-serif italic text-deep-gray">Logo 4</span>
+      </div>
+    </div>
+  </section>
+
+</Layout>
