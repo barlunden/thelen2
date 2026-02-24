@@ -1,0 +1,34 @@
+---
+// src/layouts/Layout.astro
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const { 
+  title = "Steinar Thelen | Magisk Underholdning", 
+  description = "Opplev førsteklasses magi med tryllekunstner Steinar Thelen. Perfekt for bryllup, event og firmafest." 
+} = Astro.props;
+
+import '../styles/global.css';
+---
+
+<!doctype html>
+<html lang="no">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+
+		</head>
+	<body class="bg-warm-gray text-deep-gray antialiased">
+		
+    <main>
+      <slot />
+		</main>
+
+    </body>
+</html>

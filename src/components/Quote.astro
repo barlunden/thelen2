@@ -1,0 +1,37 @@
+---
+// src/components/Quote.astro
+interface Props {
+  text: string;
+  author?: string;
+}
+
+const { text, author } = Astro.props;
+---
+
+<section class="py-24 px-6 flex justify-center overflow-hidden bg-white">
+  <div class="max-w-5xl w-full relative">
+    
+    <span class="absolute -top-12 -left-8 text-[12rem] text-sparkle/10 font-serif leading-none select-none">
+      &ldquo;
+    </span>
+
+    <div class="relative z-10 text-center md:text-left">
+      <blockquote class="space-y-6">
+        <p class="text-3xl md:text-5xl lg:text-6xl font-light tracking-tight text-deep-gray leading-[1.2]">
+          {text}
+        </p>
+        
+        {author && (
+          <div class="flex items-center justify-center md:justify-start gap-4 mt-8">
+            <div class="h-px w-12 bg-sparkle"></div>
+            <cite class="text-sm md:text-base uppercase tracking-[0.2em] font-semibold text-sparkle-shadow not-italic">
+              {author}
+            </cite>
+          </div>
+        )}
+      </blockquote>
+    </div>
+
+    <div class="absolute -bottom-16 -right-16 w-64 h-64 bg-sparkle/5 blur-[100px] rounded-full"></div>
+  </div>
+</section>

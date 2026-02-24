@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@theme {
+  /* Vi hentar fargane frå det gamle designet ditt og set dei som faste variablar */
+  --color-sparkle: #d4af37; /* Eksempel på gull/magi-farge, juster til din nøyaktige lilla/gull */
+  --color-sparkle-shadow: #aa8a2e;
+  --color-deep-gray: #1a1a1a;
+  --color-warm-gray: #f9f7f2;
+
+  /* Her kan vi definere standard font-stilar */
+  --font-display: "Inter", system-ui, sans-serif;
+}
+
+/* Her kan vi legge til globale "base"-stilar viss vi treng det */
+@layer base {
+  h1,
+  h2,
+  h3 {
+    @apply font-bold tracking-tight;
+  }
+}
