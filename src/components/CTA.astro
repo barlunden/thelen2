@@ -1,0 +1,53 @@
+---
+// src/components/CTA.astro
+interface Props {
+  title: string;
+  description?: string;
+  buttonText?: string;
+  buttonLink?: string;
+  kind?: 'dark' | 'light' | 'gold';
+}
+
+const { 
+  title, 
+  description, 
+  buttonText = "Send forespørsel", 
+  buttonLink = "#kontakt",
+  kind = 'dark' 
+} = Astro.props;
+
+// Definerer stilar basert på "kind"
+const styles = {
+  dark: "bg-deep-gray text-white",
+  light: "bg-white mx-6 text-deep-gray border y-border-gray-100",
+  gold: "bg-gradient-to-br from-sparkle to-sparkle-shadow text-white"
+};
+---
+
+<section class={`py-20 px-8 ${styles[kind]} overflow-hidden relative group`}>
+  <div class="max-w-4xl mx-auto text-center relative z-10">
+    <h2 class="text-4xl md:text-6xl font-serif italic mb-6 leading-tight">
+      {title}
+    </h2>
+    
+    {description && (
+      <p class={`max-w-xl mx-auto mb-10 font-light text-lg ${kind === 'dark' ? 'text-white/60' : 'text-deep-gray/70'}`}>
+        {description}
+      </p>
+    )}
+
+    <a 
+      href={buttonLink} 
+      data-contact
+      class={`inline-block px-12 py-4 rounded-full uppercase tracking-[0.2em] text-xs font-bold transition-all duration-500 transform hover:scale-105 shadow-xl
+        ${kind === 'dark' ? 'bg-white text-deep-gray hover:bg-sparkle hover:text-white' : 'bg-deep-gray text-white hover:bg-sparkle'}`}
+    >
+      {buttonText}
+    </a>
+  </div>
+
+  {kind === 'dark' && (
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[url('/noise.png')] opacity-[0.03] pointer-events-none"></div>
+    <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-sparkle/10 blur-[120px] rounded-full"></div>
+  )}
+</section>

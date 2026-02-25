@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
 import Quote from "../components/Quote.astro";
+import CTA from "../components/CTA.astro";
 
 // Importer bilete spesifikt for event
 import eventHero from "../assets/images/event.jpg";
@@ -68,7 +69,11 @@ import corporateAction from "../assets/images/DMCfest261023-102.jpg";
 
     </div>
   </section>
-
+<CTA 
+  title="Skal vi planlegge din neste event?"
+  description="Ta kontakt for en uforpliktende prat om hvordan vi kan løfte ditt arrangement."
+  kind="light"
+/>
   <Quote 
     text="Vi har brukt Steinar til flere av våre største konferanser. Han leverer alltid over forventning!" 
     author="Event Manager, Storbedrift AS"

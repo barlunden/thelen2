@@ -4,6 +4,7 @@ import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import Quote from "../components/Quote.astro";
 import Hero from "../components/Hero.astro";
+import CTA from "../components/CTA.astro";
 
 // Importar alle bilete som skal brukast
 import heroImage from "../assets/images/high-five.jpg";
@@ -29,7 +30,6 @@ import actionImage from "../assets/images/DMCfest261023-93.jpg";
         lille ekstra.
       </p>
     </div>
-    
     <div class="relative group">
       <Image
         src={actionImage}
@@ -45,4 +45,10 @@ import actionImage from "../assets/images/DMCfest261023-93.jpg";
     text="Utrolig proff, flink og sympatisk! Anbefales på det varmeste."
     author="Header AS"
   />
+  <CTA 
+  title="Klar for en uforglemmelig opplevelse?"
+  description="Steinar Thelen er tilgjengelig for oppdrag i hele landet. Book tidlig for å sikre din dato."
+  kind="dark"
+  buttonText="Sjekk tilgjengelighet"
+/>
 </Layout>
