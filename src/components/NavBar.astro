@@ -1,0 +1,67 @@
+---
+// src/components/NavBar.astro
+---
+
+<nav class="fixed top-0 w-full z-50 px-8 py-6 flex justify-between items-center transition-all duration-300" id="main-nav">
+  <a href="/" class="text-xl font-light tracking-[0.3em] uppercase mix-blend-difference text-white">Thelen</a>
+  
+  <div class="space-x-8 text-sm uppercase tracking-widest hidden md:flex items-center mix-blend-difference text-white">
+    <a href="/bryllup" class="hover:text-sparkle transition-colors">Bryllup</a>
+    <a href="/event" class="hover:text-sparkle transition-colors">Event</a>
+    <a href="#kontakt" class="hover:text-sparkle transition-colors border border-white/20 px-4 py-2 rounded-full">Book nå</a>
+  </div>
+
+  <button id="menu-toggle" class="md:hidden flex flex-col gap-1.5 z-50 mix-blend-difference" aria-label="Meny">
+    <span class="w-6 h-0.5 bg-white transition-transform duration-300 origin-center" id="line1"></span>
+    <span class="w-6 h-0.5 bg-white transition-opacity duration-300" id="line2"></span>
+    <span class="w-6 h-0.5 bg-white transition-transform duration-300 origin-center" id="line3"></span>
+  </button>
+
+  <div id="mobile-menu" class="fixed inset-0 bg-deep-gray z-40 translate-x-full transition-transform duration-500 ease-in-out flex flex-col items-center justify-center space-y-8">
+    <a href="/bryllup" class="text-2xl text-white uppercase tracking-[0.2em] font-light hover:text-sparkle">Bryllup</a>
+    <a href="/event" class="text-2xl text-white uppercase tracking-[0.2em] font-light hover:text-sparkle">Event</a>
+    <a href="#kontakt" class="text-2xl text-sparkle uppercase tracking-[0.2em] font-light">Book nå</a>
+  </div>
+</nav>
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const line1 = document.getElementById('line1');
+  const line2 = document.getElementById('line2');
+  const line3 = document.getElementById('line3');
+  let isMenuOpen = false;
+
+  menuToggle?.addEventListener('click', () => {
+    isMenuOpen = !isMenuOpen;
+    
+    // Toggle menu visibility
+    mobileMenu?.classList.toggle('translate-x-full', !isMenuOpen);
+    
+    // Animate hamburger to X
+    if (isMenuOpen) {
+      line1?.classList.add('translate-y-2', 'rotate-45');
+      line2?.classList.add('opacity-0');
+      line3?.classList.add('-translate-y-2', '-rotate-45');
+      document.body.style.overflow = 'hidden'; // Stop scrolling
+    } else {
+      line1?.classList.remove('translate-y-2', 'rotate-45');
+      line2?.classList.remove('opacity-0');
+      line3?.classList.remove('-translate-y-2', '-rotate-45');
+      document.body.style.overflow = ''; // Resume scrolling
+    }
+  });
+
+  // Close menu when clicking a link
+  const mobileLinks = mobileMenu?.querySelectorAll('a');
+  mobileLinks?.forEach(link => {
+    link.addEventListener('click', () => {
+      isMenuOpen = false;
+      mobileMenu?.classList.add('translate-x-full');
+      line1?.classList.remove('translate-y-2', 'rotate-45');
+      line2?.classList.remove('opacity-0');
+      line3?.classList.remove('-translate-y-2', '-rotate-45');
+      document.body.style.overflow = '';
+    });
+  });
+</script>

@@ -1,0 +1,86 @@
+---
+// src/components/ContactDrawer.astro
+---
+
+<div id="contact-drawer" class="fixed inset-0 z-100 invisible pointer-events-none">
+  <div id="drawer-overlay" class="absolute inset-0 bg-deep-gray/40 backdrop-blur-sm opacity-0 transition-opacity duration-500"></div>
+  
+  <div id="drawer-panel" class="absolute top-0 right-0 h-full w-full max-w-lg bg-white shadow-2xl translate-x-full transition-transform duration-500 ease-in-out pointer-events-auto flex flex-col">
+    
+    <div class="p-8 flex justify-between items-center border-b border-gray-100">
+      <h2 class="text-2xl font-serif italic">Send en forespørsel</h2>
+      <button id="close-drawer" class="text-deep-gray hover:text-sparkle transition-colors uppercase text-xs tracking-widest">Lukk</button>
+    </div>
+
+    <div class="flex-1 overflow-y-auto p-8">
+      <form 
+        name="kontakt" 
+        method="POST" 
+        data-netlify="true" 
+        action="/takk"
+        class="space-y-6"
+      >
+        <input type="hidden" name="form-name" value="kontakt" />
+        
+        <div class="space-y-1">
+          <label for="name" class="text-xs uppercase tracking-widest text-gray-500">Navn</label>
+          <input type="text" id="name" name="name" required class="w-full border-b border-gray-300 py-2 focus:border-sparkle outline-none transition-colors bg-transparent" />
+        </div>
+
+        <div class="space-y-1">
+          <label for="email" class="text-xs uppercase tracking-widest text-gray-500">E-post</label>
+          <input type="email" id="email" name="email" required class="w-full border-b border-gray-300 py-2 focus:border-sparkle outline-none transition-colors bg-transparent" />
+        </div>
+
+        <div class="space-y-1">
+          <label for="event-type" class="text-xs uppercase tracking-widest text-gray-500">Type arrangement</label>
+          <select id="event-type" name="type" class="w-full border-b border-gray-300 py-2 focus:border-sparkle outline-none bg-transparent">
+            <option value="bryllup">Bryllup</option>
+            <option value="event">Firmaevent</option>
+            <option value="annet">Annet</option>
+          </select>
+        </div>
+
+        <div class="space-y-1">
+          <label for="message" class="text-xs uppercase tracking-widest text-gray-500">Melding</label>
+          <textarea id="message" name="message" rows="4" required class="w-full border-b border-gray-300 py-2 focus:border-sparkle outline-none transition-colors bg-transparent resize-none"></textarea>
+        </div>
+
+        <button type="submit" class="w-full bg-deep-gray text-white py-4 rounded-full uppercase tracking-[0.2em] text-xs hover:bg-sparkle transition-colors duration-300 shadow-lg">
+          Send forespørsel
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  const drawer = document.getElementById('contact-drawer');
+  const panel = document.getElementById('drawer-panel');
+  const overlay = document.getElementById('drawer-overlay');
+  const closeBtn = document.getElementById('close-drawer');
+  
+  // Finn alle knappar som har href="#kontakt"
+  const openButtons = document.querySelectorAll('a[href="#kontakt"], button[data-contact]');
+
+  const openDrawer = (e: Event) => {
+    e.preventDefault();
+    drawer?.classList.remove('invisible');
+    overlay?.classList.add('opacity-100');
+    panel?.classList.remove('translate-x-full');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeDrawer = () => {
+    overlay?.classList.remove('opacity-100');
+    panel?.classList.add('translate-x-full');
+    document.body.style.overflow = '';
+    setTimeout(() => {
+      drawer?.classList.add('invisible');
+    }, 500);
+  };
+
+  openButtons.forEach(btn => btn.addEventListener('click', openDrawer));
+  closeBtn?.addEventListener('click', closeDrawer);
+  overlay?.addEventListener('click', closeDrawer);
+</script>

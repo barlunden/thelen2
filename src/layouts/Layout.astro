@@ -10,6 +10,8 @@ const {
   description = "Opplev førsteklasses magi med tryllekunstner Steinar Thelen." 
 } = Astro.props;
 
+import NavBar from '../components/NavBar.astro';
+import ContactDrawer from '../components/ContactDrawer.astro'
 import '../styles/global.css';
 ---
 
@@ -30,14 +32,7 @@ import '../styles/global.css';
 		
 		<div class="fixed inset-0 pointer-events-none z-50 opacity-[0.03] bg-[url('/noise.png')]"></div>
 
-		<nav class="fixed top-0 w-full z-40 mix-blend-difference px-8 py-6 flex justify-between items-center text-white">
-			<a href="/" class="text-xl font-light tracking-[0.3em] uppercase">Thelen</a>
-			<div class="space-x-8 text-sm uppercase tracking-widest hidden md:block">
-				<a href="/bryllup" class="hover:text-sparkle transition-colors">Bryllup</a>
-				<a href="/event" class="hover:text-sparkle transition-colors">Event</a>
-				<a href="#kontakt" class="hover:text-sparkle transition-colors border border-white/20 px-4 py-2 rounded-full">Book nå</a>
-			</div>
-		</nav>
+		<NavBar />
     
 		<main>
 			<slot />
@@ -47,6 +42,6 @@ import '../styles/global.css';
 			<p class="text-xs uppercase tracking-[0.5em] mb-4 text-sparkle">Steinar Thelen</p>
 			<p class="font-light italic">&copy; {new Date().getFullYear()} — Comino Web Standard</p>
 		</footer>
-
+		<ContactDrawer />
 	</body>
 </html>
